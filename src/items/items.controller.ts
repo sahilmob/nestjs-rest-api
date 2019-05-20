@@ -1,12 +1,23 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Req,
+  Res,
+} from '@nestjs/common';
+import { Request, Response } from 'express';
 
 import { CreateItemDto } from './dto/create-item.dto';
 
 @Controller('items')
 export class ItemsController {
   @Get()
-  findAll(): string {
-    return 'Get All Items';
+  findAll(@Req() req: Request, @Res() res: Response): Response {
+    console.log(req.url);
+    return res.send('Hello world');
   }
 
   @Post()
