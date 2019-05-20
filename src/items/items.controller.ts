@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   Put,
   Req,
@@ -18,6 +19,11 @@ export class ItemsController {
   findAll(@Req() req: Request, @Res() res: Response): Response {
     console.log(req.url);
     return res.send('Hello world');
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id) {
+    return `Item ${id}`;
   }
 
   @Post()
