@@ -5,13 +5,13 @@ import { Item } from './interfaces/item.interface';
 export class ItemsService {
   private readonly items: Item[] = [
     {
-      id: 'fsdrgerger',
+      id: '1',
       name: 'Item 1',
       qty: 100,
       description: 'This is item one',
     },
     {
-      id: 'fsdrgerger',
+      id: '2',
       name: 'Item 2',
       qty: 100,
       description: 'This is item two',
@@ -20,5 +20,9 @@ export class ItemsService {
 
   findAll(): Item[] {
     return this.items;
+  }
+
+  findOne(id: string): Item {
+    return this.items.find(item => item.id === id);
   }
 }
