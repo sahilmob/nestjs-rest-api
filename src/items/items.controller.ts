@@ -12,14 +12,16 @@ import {
 import { Request, Response } from 'express';
 
 import { CreateItemDto } from './dto/create-item.dto';
+import { Item } from './interfaces/item.interface';
+import { ItemsService } from './items.service';
 import { UpdateItemDto } from './dto/update-item.dto';
 
 @Controller('items')
 export class ItemsController {
+  constructor(private readonly itemsService: ItemsService) {}
   @Get()
-  findAll(@Req() req: Request, @Res() res: Response): Response {
-    console.log(req.url);
-    return res.send('Hello world');
+  findAll(): Item[] {
+    return this.itemsService.findAll();
   }
 
   @Get(':id')
